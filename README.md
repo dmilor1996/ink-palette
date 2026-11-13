@@ -24,6 +24,8 @@
 2. Проверить, что названия не повторяются: `python3 tools/palette.py data/shades.json`.
 3. Пересобрать страницу: `python3 tools/build.py img tools/index.src.html . data/swatch-cuts.json`
 
+Скриптам нужны Python 3, `numpy` и `opencv-python`. Саму страницу правьте в `tools/index.src.html`: `index.html` при сборке перезаписывается. Готовые картинки из `img/` сборка не пересжимает.
+
 ## Ограничения
 
 - Цвета сняты с фотографий, поэтому зависят от съёмки и экрана. Перед работой сверяйтесь с живым образцом.

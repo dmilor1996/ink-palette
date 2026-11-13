@@ -2,7 +2,6 @@
 import sys, json, os
 import numpy as np, cv2
 
-SRC, OUT = sys.argv[1], sys.argv[2]
 THR = 7
 PHOTOS = [
     ('photos/palette-1.jpg', ['INK10P', 'INK11P', 'INK20P', 'INK30P', 'INK40P']),
@@ -44,6 +43,7 @@ def detect(img, thr):
 
 
 if __name__ == '__main__':
+    SRC, OUT = sys.argv[1], sys.argv[2]
     os.makedirs(OUT, exist_ok=True)
     for pi, (fn, colors) in enumerate(PHOTOS):
         img = cv2.imread(os.path.join(SRC, fn))

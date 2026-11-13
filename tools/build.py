@@ -1,12 +1,13 @@
-"""Assemble the site: tiles -> img/*.jpg, palette data -> index.html. Usage: build.py <tiles_dir> <template> <dist_dir>"""
-import sys, os, json
+"""Assemble the site: tiles -> img/*.jpg, palette data -> index.html.
+Usage: build.py <tiles_dir> <template> <dist_dir> [swatch-cuts.json]
+Tiles that are already JPEG (a rebuild from img/) are copied as they are: re-encoding them on every build would degrade them."""
+import sys, os, json, shutil
 import numpy as np, cv2
-sys.path.insert(0, '/home/claude')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import palette as P
 
 TILES, TEMPLATE, DIST = sys.argv[1], sys.argv[2], sys.argv[3]
 CUTS = sys.argv[4] if len(sys.argv) > 4 else os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'swatch-cuts.json')
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from detect import PHOTOS
 PHOTO_FILES = ['photos/palette-%d.jpg' % (i + 1) for i in range(len(PHOTOS))]
 cuts = json.load(open(CUTS))
@@ -15,12 +16,15 @@ for i, (fn, cols) in enumerate(PHOTOS):
     photo_index[fn] = i; photo_index[PHOTO_FILES[i]] = i
 os.makedirs(os.path.join(DIST, 'img'), exist_ok=True)
 
-def tile(code):
+def tile_file(code):
     for ext in ('.png', '.jpg'):
         f = os.path.join(TILES, code + ext)
         if os.path.exists(f):
-            return cv2.imread(f)
+            return f
     raise FileNotFoundError(code)
+
+def tile(code):
+    return cv2.imread(tile_file(code))
 
 def lab_of(code):
     """CIELAB (D65) of the tile's average light"""
@@ -67,8 +71,11 @@ for r in P.rows():
     shades.append({'c': code, 'g': gid, 'lv': lv, 'tone': r['tone'], 'names': r['names'], 'comp': comp, 'own': own, 'lab': lab_of(code), 'ph': ph_of(code)})
     im = tile(code)
     assert im is not None and im.shape[:2] == (300, 240), code
-    out = os.path.join(DIST, 'img', code + '.jpg')
-    cv2.imwrite(out, im, [cv2.IMWRITE_JPEG_QUALITY, 90])
+    src, out = tile_file(code), os.path.join(DIST, 'img', code + '.jpg')
+    if not src.endswith('.jpg'):
+        cv2.imwrite(out, im, [cv2.IMWRITE_JPEG_QUALITY, 90])
+    elif not (os.path.exists(out) and os.path.samefile(src, out)):
+        shutil.copyfile(src, out)
     total += os.path.getsize(out)
 
 Ls = [s['lab'][0] for s in shades]; Cs = [float(np.hypot(s['lab'][1], s['lab'][2])) for s in shades]
