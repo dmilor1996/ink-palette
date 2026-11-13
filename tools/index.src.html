@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Палитра морилок INK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Sofia+Sans+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout: one left-aligned column, like a page of the printed sample card. Six swatches per row,
+     and a tapped swatch unfolds in place under its row. The stains are the only colour on the page. */
+  --paper: #e6e8eb;      /* the cool grey card the samples are glued to */
+  --card: #f5f6f7;       /* an opened specimen */
+  --ink: #17191c;
+  --soft: #565c64;
+  --rule: #c4c8ce;
+  --band: #3d3733;       /* the dark taupe section band of the brochure */
+  --band-ink: #f3f1ee;
+  --display: "Sofia Sans Condensed", "Roboto Condensed", "Arial Narrow", sans-serif;
+  --body: "Golos Text", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1b1d20; --card: #262a2e; --ink: #eceef0; --soft: #a3a9b2; --rule: #3c4046;
+    --band: #4b433e; --band-ink: #f3f1ee;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1b1d20; --card: #262a2e; --ink: #eceef0; --soft: #a3a9b2; --rule: #3c4046;
+  --band: #4b433e; --band-ink: #f3f1ee;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 15px/1.5 var(--body); }
+img { max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 16px 56px; }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- title ---------- */
+.top { padding: 22px 0 6px; }
+.top h1 { margin: 0; font: 800 44px/0.95 var(--display); letter-spacing: 0.005em; text-wrap: balance; }
+.top p { margin: 8px 0 0; max-width: 56ch; color: var(--soft); }
+
+/* ---------- search ---------- */
+.find { position: sticky; top: 0; z-index: 5; background: var(--paper); padding: 10px 0; }
+.field { position: relative; }
+.field input {
+  width: 100%; height: 48px; padding: 0 46px 0 14px; font-size: 16px;
+  background: var(--card); border: 1.5px solid var(--rule); border-radius: 4px; outline: none;
+  -webkit-appearance: none; appearance: none;
+}
+.field input::placeholder { color: var(--soft); opacity: 1; }
+.field input:focus-visible { border-color: var(--ink); box-shadow: 0 0 0 1.5px var(--ink); }
+.field input::-webkit-search-cancel-button { display: none; }
+.clear {
+  position: absolute; right: 4px; top: 4px; width: 40px; height: 40px; border: 0; background: none;
+  border-radius: 4px; cursor: pointer; font: 500 26px/1 var(--display); color: var(--soft);
+}
+.clear[hidden] { display: none; }
+.eg { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 2px 0 10px; color: var(--soft); font-size: 14px; }
+.eg button {
+  border: 1px solid var(--rule); background: none; border-radius: 999px; padding: 4px 12px; cursor: pointer; color: var(--ink);
+}
+.eg button:hover { border-color: var(--ink); }
+:is(.clear, .eg button, .vols button, .copy, .x, .sib, .hitbtn, .mv, .tune, .nb):focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.views { scroll-margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; margin: 4px 0 0; border: 1.5px solid var(--ink); border-radius: 4px; overflow: hidden; }
+.views button { height: 42px; border: 0; background: none; cursor: pointer; font-weight: 500; }
+.views button[aria-pressed="true"] { background: var(--ink); color: var(--card); }
+.views button:focus-visible { outline: 2px solid var(--ink); outline-offset: -5px; }
+.views button[aria-pressed="true"]:focus-visible { outline-color: var(--card); }
+
+/* ---------- picking with sliders ---------- */
+.pick-lede { margin: 16px 0 0; max-width: 60ch; color: var(--soft); }
+.sl { display: grid; gap: 5px; margin-top: 14px; max-width: 620px; }
+.sl label { font-weight: 500; }
+.sl input { -webkit-appearance: none; appearance: none; display: block; width: 100%; height: 32px; margin: 0; padding: 0; border-radius: 4px; background: var(--track, var(--rule)); cursor: pointer; outline: none; touch-action: pan-y; }
+.sl input::-webkit-slider-runnable-track { height: 32px; background: transparent; }
+.sl input::-moz-range-track { height: 32px; background: transparent; }
+.sl input::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 18px; height: 32px; border-radius: 4px; background: #fff; border: 2px solid #17191c; box-shadow: 0 0 0 1.5px #fff; }
+.sl input::-moz-range-thumb { width: 14px; height: 28px; border-radius: 4px; background: #fff; border: 2px solid #17191c; box-shadow: 0 0 0 1.5px #fff; }
+.sl input:focus-visible { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+.ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--soft); }
+.near-h { margin: 22px 0 8px; font: 700 20px/1.2 var(--display); }
+.near { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 8px; align-items: start; }
+.nb { padding: 0; border: 0; background: none; text-align: left; cursor: pointer; min-width: 0; }
+.nb img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; background: var(--rule); }
+.nb .nn { display: block; margin-top: 6px; font: 700 17px/1.15 var(--display); letter-spacing: 0.01em; overflow-wrap: anywhere; }
+.nb .nc { display: block; margin-top: 2px; font: 500 13px/1.2 var(--display); letter-spacing: 0.03em; color: var(--soft); }
+.nb[aria-expanded="true"] img { outline: 3px solid var(--ink); outline-offset: 2px; }
+#pick > .spec { margin-top: 20px; }
+
+/* ---------- "like this, but…" ---------- */
+.but h3 { margin: 18px 0 8px; font: 700 20px/1.2 var(--display); color: var(--ink); }
+.moves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; max-width: 460px; }
+.mv { display: flex; align-items: center; gap: 10px; min-height: 50px; padding: 5px 10px 5px 5px; border: 1.5px solid var(--rule); border-radius: 4px; background: none; cursor: pointer; text-align: left; min-width: 0; }
+.mv img { flex: none; width: 30px; height: 38px; object-fit: cover; border-radius: 2px; background: var(--rule); }
+.mv:hover:not(:disabled) { border-color: var(--ink); }
+.mv:disabled { cursor: default; padding-left: 12px; color: var(--soft); border-style: dashed; }
+.tune { margin-top: 8px; padding: 8px 0; border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.like .sib span { font-size: 11px; letter-spacing: 0; overflow-wrap: anywhere; }
+.spec:focus { outline: none; }
+
+/* ---------- board ---------- */
+.band {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px;
+  margin: 26px 0 0; padding: 8px 12px; background: var(--band); color: var(--band-ink);
+  font: 700 20px/1.2 var(--display); letter-spacing: 0.01em;
+}
+.band span { font: 400 13px/1.3 var(--body); opacity: 0.85; }
+.row { padding: 16px 0 4px; scroll-margin-top: 66px; }
+.rowhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 10px; margin-bottom: 8px; }
+.gcode { font: 700 19px/1.2 var(--display); letter-spacing: 0.02em; }
+.gname { font-weight: 500; }
+.gmix { color: var(--soft); font-size: 13px; margin-left: auto; font-variant-numeric: tabular-nums; }
+.six { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; align-items: start; }
+.sw { display: block; padding: 0; border: 0; background: none; text-align: left; cursor: pointer; min-width: 0; }
+.sw img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; background: var(--rule); transition: transform 0.14s ease; }
+.sw .lv { display: block; margin-top: 5px; font: 500 13px/1.1 var(--display); letter-spacing: 0.03em; color: var(--soft); }
+@media (hover: hover) { .sw:hover img { transform: translateY(-3px); } }
+.sw:focus-visible { outline: none; }
+.sw:focus-visible img, .sw[aria-expanded="true"] img { outline: 3px solid var(--ink); outline-offset: 2px; }
+.sw[aria-expanded="true"] .lv { color: var(--ink); font-weight: 700; }
+
+/* ---------- opened specimen ---------- */
+.spec {
+  position: relative; margin: 14px 0 6px; padding: 16px; background: var(--card); border-radius: 4px;
+  border-top: 3px solid var(--ink); scroll-margin: 84px 0 16px; animation: unfold 0.18s ease-out;
+}
+@keyframes unfold { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.x {
+  position: absolute; right: 6px; top: 6px; width: 40px; height: 40px; border: 0; background: none; cursor: pointer;
+  font: 500 30px/1 var(--display); color: var(--soft); border-radius: 4px;
+}
+.x:hover, .clear:hover { color: var(--ink); }
+.spec-top { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 18px; align-items: start; }
+.big { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 3px; background: var(--rule); }
+.code { margin: 0; padding-right: 36px; font: 800 34px/1 var(--display); letter-spacing: 0.02em; }
+.what { margin: 6px 0 0; color: var(--soft); }
+.names-h, .recipe h3, .mix h3, .sibs h3 { margin: 16px 0 6px; font: 500 13px/1.3 var(--body); color: var(--soft); }
+.names { margin: 0; padding: 0; list-style: none; }
+.names li { font: 700 22px/1.22 var(--display); letter-spacing: 0.01em; }
+.recipe { margin-top: 6px; }
+.rhead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 18px 0 8px; }
+.rhead h3 { margin: 0; font: 700 20px/1.2 var(--display); color: var(--ink); }
+.vols { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.vols button {
+  min-width: 52px; height: 36px; padding: 0 10px; border: 1.5px solid var(--rule); background: none; border-radius: 4px; cursor: pointer;
+  font-variant-numeric: tabular-nums;
+}
+.vols button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.vols label { display: inline-flex; align-items: center; gap: 6px; color: var(--soft); font-size: 14px; margin-left: 4px; }
+.vols input {
+  width: 68px; height: 36px; padding: 0 8px; font-size: 16px; background: var(--paper); border: 1.5px solid var(--rule); border-radius: 4px; outline: none;
+  font-variant-numeric: tabular-nums;
+}
+.vols input:focus-visible { border-color: var(--ink); box-shadow: 0 0 0 1.5px var(--ink); }
+table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.rc td { padding: 7px 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+.rc td:last-child { text-align: right; white-space: nowrap; font-weight: 600; padding-left: 12px; }
+.rc .cc { font: 700 17px/1 var(--display); letter-spacing: 0.02em; margin-right: 8px; }
+.rc .cn { color: var(--soft); }
+.rc tr.sum td { border-bottom: 0; color: var(--soft); font-weight: 400; }
+.ready { margin: 8px 0 0; max-width: 60ch; color: var(--soft); font-size: 14px; }
+.mix { max-width: 460px; }
+.bar { display: flex; height: 22px; border-radius: 3px; overflow: hidden; }
+.bar i { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 8px 0 0; padding: 0; list-style: none; font-size: 14px; font-variant-numeric: tabular-nums; }
+.legend li { display: inline-flex; align-items: center; gap: 6px; }
+.legend b { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+.act { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-top: 16px; }
+.copy { height: 42px; padding: 0 18px; border: 0; border-radius: 4px; background: var(--ink); color: var(--card); cursor: pointer; font-weight: 500; }
+.copied { color: var(--soft); font-size: 14px; }
+.copytext { width: 100%; margin: 0; padding: 10px 12px; background: var(--paper); border-radius: 4px; font-size: 14px; user-select: all; -webkit-user-select: all; }
+.sibrow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; max-width: 460px; align-items: start; }
+.sib { padding: 0; border: 0; background: none; cursor: pointer; text-align: left; min-width: 0; }
+.sib img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 2px; background: var(--rule); }
+.sib span { display: block; margin-top: 3px; font: 500 12px/1.1 var(--display); letter-spacing: 0.03em; color: var(--soft); }
+.sib[aria-current="true"] img { outline: 2px solid var(--ink); outline-offset: 1px; }
+.sib[aria-current="true"] span { color: var(--ink); font-weight: 700; }
+
+/* ---------- search results ---------- */
+.count { margin: 14px 0 4px; color: var(--soft); }
+.hits { margin: 0; padding: 0; list-style: none; }
+.hit { border-bottom: 1px solid var(--rule); padding: 10px 0; scroll-margin-top: 70px; }
+.hitbtn {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: center; width: 100%;
+  padding: 0; border: 0; background: none; text-align: left; cursor: pointer; border-radius: 3px;
+}
+.hitbtn img { display: block; width: 64px; height: 80px; object-fit: cover; border-radius: 3px; background: var(--rule); }
+.hitbtn[aria-expanded="true"] img { outline: 3px solid var(--ink); outline-offset: 2px; }
+.hnames { display: block; font: 500 20px/1.2 var(--display); letter-spacing: 0.01em; color: var(--soft); }
+.hnames b { font-weight: 700; color: var(--ink); }
+.hmeta { display: block; margin-top: 4px; font-size: 13px; color: var(--soft); }
+.hmeta strong { font: 700 15px/1 var(--display); letter-spacing: 0.03em; color: var(--ink); margin-right: 6px; }
+.none { margin: 18px 0; max-width: 52ch; }
+
+/* ---------- notes ---------- */
+.notes { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--soft); font-size: 14px; }
+.notes h2 { margin: 0 0 6px; font: 700 18px/1.2 var(--display); color: var(--ink); }
+.notes p { margin: 0 0 8px; max-width: 68ch; }
+
+@media (min-width: 720px) {
+  .spec { display: grid; grid-template-columns: 250px minmax(0, 1fr); column-gap: 28px; padding: 20px; }
+  .spec-top { display: contents; }
+  .big { grid-column: 1; grid-row: 1 / span 6; align-self: start; }
+  .spec-top > div, .but, .recipe, .mix, .act, .sibs { grid-column: 2; }
+  .near { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .top h1 { font-size: 36px; }
+  .six { gap: 5px; }
+  .sw .lv { font-size: 12px; letter-spacing: 0; }
+  .gmix { margin-left: 0; width: 100%; }
+  .spec { padding: 14px 12px; margin-left: -4px; margin-right: -4px; }
+  .spec-top { grid-template-columns: minmax(0, 38%) minmax(0, 1fr); gap: 12px; }
+  .code { font-size: 28px; }
+  .names li { font-size: 20px; }
+  .vols label { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .spec { animation: none; }
+  .sw img { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1>Палитра INK</h1>
+    <p>150 оттенков морилки на ясене. Нажмите на образец, опишите цвет словами или подберите его ползунками, и увидите названия и рецепт смешивания.</p>
+  </header>
+
+  <div class="find">
+    <div class="field">
+      <label class="vh" for="q">Поиск оттенка по названию или коду</label>
+      <input id="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"
+             placeholder="Опишите цвет или введите код">
+      <button class="clear" id="clear" type="button" aria-label="Очистить поиск" hidden>×</button>
+    </div>
+  </div>
+  <div class="eg" id="eg">
+    <span>Например:</span>
+    <button type="button">венге</button>
+    <button type="button">орех</button>
+    <button type="button">серо-голубой</button>
+    <button type="button">белёный</button>
+    <button type="button">пастель</button>
+  </div>
+  <div class="views" id="views" role="group" aria-label="Способ выбора">
+    <button type="button" data-view="board" aria-pressed="true">Вся палитра</button>
+    <button type="button" data-view="pick" aria-pressed="false">Подбор ползунками</button>
+  </div>
+
+  <main>
+    <div id="results" hidden></div>
+    <section id="pick" aria-label="Подбор ползунками" hidden>
+      <p class="pick-lede">Двигайте ползунки, пока образцы внизу не станут похожи на нужный цвет. Показываются только настоящие выкрасы.</p>
+      <div class="sl">
+        <label for="s-h">Оттенок</label>
+        <input id="s-h" type="range" min="0" max="359" step="1">
+      </div>
+      <div class="sl">
+        <label for="s-l">Светлота</label>
+        <input id="s-l" type="range" step="0.5">
+        <div class="ends"><span>темнее</span><span>светлее</span></div>
+      </div>
+      <div class="sl">
+        <label for="s-c">Насыщенность</label>
+        <input id="s-c" type="range" min="0" step="0.5">
+        <div class="ends"><span>спокойнее, ближе к серому</span><span>ярче</span></div>
+      </div>
+      <p class="near-h" id="near-h" role="status"></p>
+      <div class="near" id="near"></div>
+    </section>
+    <div id="board"></div>
+  </main>
+
+  <footer class="notes">
+    <h2>Как читать коды</h2>
+    <p>Число после кода цвета показывает долю концентрата в готовой морилке: 40, 15, 5 или 2 процента. Остальное составляет основа, которой производитель советует разбавлять.</p>
+    <p>B1005 и B1002 обозначают пастель: 10% белого INKBP и 0,5% или 0,2% цветного концентрата.</p>
+    <p>Вторичные цвета (буква S) смешиваются из базовых (буква P). В рецепте они уже разложены на базовые.</p>
+    <h2>О точности</h2>
+    <p>Выкрасы сделаны на ясене. Морилка прозрачная, поэтому на дубе, сосне или буке тот же состав ляжет иначе: делайте пробный выкрас на своей древесине.</p>
+    <p>Образцы вырезаны из фотографий палитры, свет на них выровнен по бумаге, поэтому цвет зависит от съёмки и вашего экрана. Перед работой сверяйте оттенок с живым образцом. Проценты приняты объёмными, а народные названия подобраны по виду образцов и не взяты у производителя.</p>
+  </footer>
+</div>
+
+<script>
+const PALETTE = /*__DATA__*/null;
+const G = Object.fromEntries(PALETTE.groups.map(g => [g.id, g]));
+const S = Object.fromEntries(PALETTE.shades.map(s => [s.c, s]));
+const ORDER = PALETTE.shades.map(s => s.c);
+
+const $ = (sel, el = document) => el.querySelector(sel);
+const el = (tag, attrs = {}, kids = []) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'text') n.textContent = v; else if (k === 'html') n.innerHTML = v; else n.setAttribute(k, v);
+  }
+  for (const k of [].concat(kids)) if (k) n.append(k);
+  return n;
+};
+const nf = new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 2 });
+const ml = v => nf.format(Math.round(v * 100) / 100) + ' мл';
+const litres = v => nf.format(v) + ' л';
+const plural = (n, a, b, c) => { const m = n % 100, k = n % 10; return m > 10 && m < 20 ? c : k === 1 ? a : k > 1 && k < 5 ? b : c; };
+const levelLabel = s => s.lv.startsWith('B') ? s.lv : s.lv + '%';
+const img = (code, cls, alt = '') => el('img', { src: 'img/' + code + '.jpg', alt, class: cls || '', loading: 'lazy', decoding: 'async', width: 240, height: 300 });
+
+/* ---------- state ---------- */
+const state = { q: '', code: null, vol: 1, view: 'board', pick: null };
+try { const v = parseFloat(localStorage.getItem('ink-vol')); if (v > 0 && v <= 1000) state.vol = v; } catch (e) {}
+
+/* ---------- recipe ---------- */
+function recipeRows(s, vol) {
+  const rows = s.comp.map(([code, per]) => ({ code, name: G[code].name, ml: per * vol }));
+  const used = rows.reduce((a, r) => a + r.ml, 0);
+  rows.push({ code: '', name: 'Основа (разбавитель)', ml: vol * 1000 - used });
+  return rows;
+}
+function recipeText(s, vol) {
+  const parts = recipeRows(s, vol).map(r => (r.code || 'основа') + ' ' + ml(r.ml));
+  return s.c + ' (' + s.names[0] + '), на ' + litres(vol) + ': ' + parts.join(', ');
+}
+
+/* ---------- colour: every swatch has a measured L*a*b*; all matching is between real swatches ---------- */
+const dE = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+const chroma = p => Math.hypot(p[1], p[2]);
+function lab2css(L, a, b) {
+  const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
+  const f = t => (t * t * t > 0.008856 ? t * t * t : (t - 16 / 116) / 7.787);
+  const X = 0.95047 * f(fx), Y = f(fy), Z = 1.08883 * f(fz);
+  const lin = [3.2406 * X - 1.5372 * Y - 0.4986 * Z, -0.9689 * X + 1.8758 * Y + 0.0415 * Z, 0.0557 * X - 0.204 * Y + 1.057 * Z];
+  return 'rgb(' + lin.map(v => { v = Math.min(1, Math.max(0, v)); return Math.round(255 * (v <= 0.0031308 ? 12.92 * v : 1.055 * Math.pow(v, 1 / 2.4) - 0.055)); }).join(',') + ')';
+}
+const WARM = [Math.cos(58 * Math.PI / 180), Math.sin(58 * Math.PI / 180)];   // towards honey-orange; the opposite is blue-grey
+const MOVES = [['darker', 'темнее'], ['lighter', 'светлее'], ['cooler', 'холоднее'], ['warmer', 'теплее'], ['calmer', 'спокойнее'], ['brighter', 'ярче']];
+function move(code, kind) {
+  /* the nearest real swatch that goes a clear step in the asked direction and drifts least in the others */
+  const o = S[code].lab, oc = chroma(o);
+  let best = null;
+  for (const s of PALETTE.shades) {
+    if (s.c === code) continue;
+    const dL = s.lab[0] - o[0], da = s.lab[1] - o[1], db = s.lab[2] - o[2];
+    let step, drift;
+    if (kind === 'lighter' || kind === 'darker') { step = (kind === 'lighter' ? 1 : -1) * dL; drift = Math.hypot(da, db); }
+    else if (kind === 'warmer' || kind === 'cooler') {
+      const along = da * WARM[0] + db * WARM[1], across = -da * WARM[1] + db * WARM[0];
+      step = (kind === 'warmer' ? 1 : -1) * along; drift = Math.hypot(dL, across);
+    } else {
+      const dC = chroma(s.lab) - oc;
+      step = (kind === 'brighter' ? 1 : -1) * dC; drift = Math.hypot(dL, Math.sqrt(Math.max(0, da * da + db * db - dC * dC)));
+    }
+    if (step < 3 || step > 24 || drift > 18) continue;        // a clear step, but not a jump to another colour
+    const cost = drift + 0.5 * step + (drift > 11 ? 100 : 0);  // a looser match only when there is no close one
+    if (!best || cost < best.cost) best = { s, cost };
+  }
+  return best && best.s;
+}
+function similar(code, n) {
+  const o = S[code];
+  return PALETTE.shades.filter(s => s.g !== o.g).map(s => [dE(s.lab, o.lab), s]).sort((a, b) => a[0] - b[0]).slice(0, n).map(x => x[1]);
+}
+
+/* ---------- the opened specimen ---------- */
+function buildSpec(s) {
+  const g = G[s.g];
+  const box = el('div', { class: 'spec', role: 'region', 'aria-label': 'Оттенок ' + s.c });
+  const close = el('button', { class: 'x', type: 'button', 'aria-label': 'Закрыть оттенок', text: '×' });
+  close.addEventListener('click', () => closeSpec(true));
+
+  const names = el('ul', { class: 'names' }, s.names.map(n => el('li', { text: n })));
+  const top = el('div', { class: 'spec-top' }, [
+    img(s.c, 'big', 'Образец ' + s.c),
+    el('div', {}, [
+      el('p', { class: 'code', text: s.c }),
+      el('p', { class: 'what', text: g.name + ', ' + s.tone + (s.lv.startsWith('B') ? '' : ' тон') }),
+      el('p', { class: 'names-h', text: 'Как называют' }),
+      names,
+    ]),
+  ]);
+
+  /* recipe */
+  const tbody = el('tbody');
+  const ready = el('p', { class: 'ready' });
+  const presets = [0.5, 1, 5, 10];
+  const volBtns = presets.map(v => {
+    const b = el('button', { type: 'button', text: litres(v) });
+    b.addEventListener('click', () => setVol(v, true));
+    return b;
+  });
+  const volIn = el('input', { id: 'vol', type: 'number', inputmode: 'decimal', min: '0.05', max: '1000', step: '0.05', placeholder: '2,5', 'aria-label': 'Свой объём в литрах' });
+  volIn.addEventListener('input', () => { const v = parseFloat(volIn.value); if (v > 0 && v <= 1000) setVol(v, false); });
+  function paint() {
+    tbody.replaceChildren(...recipeRows(s, state.vol).map(r => el('tr', {}, [
+      el('td', {}, r.code ? [el('span', { class: 'cc', text: r.code }), el('span', { class: 'cn', text: r.name })] : [el('span', { text: r.name })]),
+      el('td', { text: ml(r.ml) }),
+    ])), el('tr', { class: 'sum' }, [el('td', { text: 'Всего' }), el('td', { text: ml(state.vol * 1000) })]));
+    volBtns.forEach((b, i) => b.setAttribute('aria-pressed', String(presets[i] === state.vol)));
+    if (g.mix) {
+      const bases = g.mix.map(m => m[0]);
+      ready.textContent = 'Есть готовый концентрат ' + g.id + '? Возьмите ' + ml(s.own * state.vol) + ' вместо ' + bases.join(' и ') + '.';
+    }
+    copied.textContent = ''; shown.hidden = true;
+  }
+  function setVol(v, syncInput) {
+    state.vol = v;
+    try { localStorage.setItem('ink-vol', String(v)); } catch (e) {}
+    if (syncInput) volIn.value = '';
+    paint();
+  }
+  const copied = el('span', { class: 'copied', role: 'status' });
+  const shown = el('p', { class: 'copytext' }); shown.hidden = true;
+  const copy = el('button', { class: 'copy', type: 'button', text: 'Скопировать рецепт' });
+  copy.addEventListener('click', async () => {
+    const text = recipeText(s, state.vol);
+    try { await navigator.clipboard.writeText(text); copied.textContent = 'Рецепт скопирован'; shown.hidden = true; }
+    catch (e) { copied.textContent = 'Скопировать не получилось. Выделите текст ниже:'; shown.textContent = text; shown.hidden = false; }
+  });
+
+  const recipe = el('div', { class: 'recipe' }, [
+    el('div', { class: 'rhead' }, [
+      el('h3', { text: 'Рецепт на' }),
+      el('div', { class: 'vols', role: 'group', 'aria-label': 'Объём готовой морилки' }, [...volBtns, el('label', {}, ['свой объём, л', volIn])]),
+    ]),
+    el('table', { class: 'rc' }, tbody),
+    g.mix ? ready : null,
+  ]);
+
+  /* what a secondary concentrate is made of, drawn the way the brochure draws it */
+  let mix = null;
+  if (g.mix) {
+    mix = el('div', { class: 'mix' }, [
+      el('h3', { text: 'Из чего состоит ' + g.id }),
+      el('div', { class: 'bar', role: 'img', 'aria-label': g.mix.map(m => m[1] + '% ' + m[0]).join(', ') },
+        g.mix.map(m => el('i', { style: 'width:' + m[1] + '%;background:' + G[m[0]].hex }))),
+      el('ul', { class: 'legend' }, g.mix.map(m => el('li', {}, [el('b', { style: 'background:' + G[m[0]].hex }), m[1] + '% ' + m[0] + ' ' + G[m[0]].name]))),
+    ]);
+  }
+
+  const sibs = el('div', { class: 'sibs' }, [
+    el('h3', { text: 'Этот же цвет в другой концентрации' }),
+    el('div', { class: 'sibrow' }, PALETTE.shades.filter(x => x.g === s.g).map(x => {
+      const b = el('button', { class: 'sib', type: 'button', 'aria-label': x.c + ', ' + x.names[0], 'aria-current': String(x.c === s.c) }, [img(x.c), el('span', { text: levelLabel(x) })]);
+      b.addEventListener('click', () => { if (x.c !== s.c) openSpec(x.c, { swap: true, still: true }); });
+      return b;
+    })),
+  ]);
+
+  /* "like this, but…": each button leads to a real neighbouring swatch */
+  const but = el('div', { class: 'but' }, [
+    el('h3', { text: 'Вот такой, но…' }),
+    el('div', { class: 'moves' }, MOVES.map(([kind, label]) => {
+      const to = move(s.c, kind);
+      const b = el('button', { class: 'mv', type: 'button' }, to ? [img(to.c), el('span', { text: label })] : [el('span', { text: label + ' нет' })]);
+      if (to) { b.setAttribute('aria-label', label + ': ' + to.c + ', ' + to.names[0]); b.addEventListener('click', () => openSpec(to.c, { swap: true, still: true })); }
+      else b.disabled = true;
+      return b;
+    })),
+  ]);
+  const tune = el('button', { class: 'tune', type: 'button', text: 'Подвигать ползунки от этого цвета' });
+  tune.addEventListener('click', () => { pickFrom(s.c); });
+  but.append(tune);
+  const like = el('div', { class: 'sibs like' }, [
+    el('h3', { text: 'Похожие оттенки из других цветов' }),
+    el('div', { class: 'sibrow' }, similar(s.c, 6).map(x => {
+      const b = el('button', { class: 'sib', type: 'button', 'aria-label': x.c + ', ' + x.names[0] }, [img(x.c), el('span', { text: x.c })]);
+      b.addEventListener('click', () => openSpec(x.c, { swap: true, still: true }));
+      return b;
+    })),
+  ]);
+  box.append(close, top, but, recipe, mix || '', el('div', { class: 'act' }, [copy, copied, shown]), sibs, like);
+  volIn.value = presets.includes(state.vol) ? '' : String(state.vol);
+  paint();
+  return box;
+}
+
+/* ---------- open / close ---------- */
+let specEl = null;
+const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+function triggerFor(code) {
+  const root = state.q ? $('#results') : state.view === 'pick' ? $('#near') : $('#board');
+  return root.querySelector('[data-code="' + code + '"]');
+}
+function markOpen(code) {
+  document.querySelectorAll('[data-code][aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  const t = code && triggerFor(code);
+  if (t) t.setAttribute('aria-expanded', 'true');
+  return t;
+}
+function setHash(name) { try { if (location.hash !== '#' + name) location.replace('#' + name); } catch (e) {} }
+function openSpec(code, opts = {}) {
+  const s = S[code]; if (!s) return;
+  const fresh = buildSpec(s);
+  if (opts.swap && specEl) {                        // walking from swatch to swatch: the card stays where it is
+    fresh.style.animation = 'none';
+    specEl.replaceWith(fresh);
+    fresh.tabIndex = -1; fresh.focus({ preventScroll: true });
+  } else {
+    if (specEl) specEl.remove();
+    const t = triggerFor(code);
+    const host = t ? t.closest('.row, .hit, #pick') : (state.view === 'pick' && !state.q ? $('#pick') : $('#board'));
+    host.append(fresh);
+  }
+  specEl = fresh; state.code = code;
+  markOpen(code);
+  if (!opts.quiet) setHash(code);
+  if (!opts.still) requestAnimationFrame(() => {
+    const r = fresh.getBoundingClientRect(), host = fresh.parentElement, hr = host.getBoundingClientRect();
+    if (hr.top >= 66 && r.bottom <= window.innerHeight) return;     // row and specimen already fit on screen
+    host.scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
+  });
+}
+function closeSpec(focusBack) {
+  const code = state.code;
+  if (specEl) specEl.remove();
+  specEl = null; state.code = null;
+  markOpen(null);
+  setHash('all');
+  if (focusBack && code) { const t = triggerFor(code); if (t) t.focus({ preventScroll: true }); }
+}
+function toggle(code) { state.code === code ? closeSpec(false) : openSpec(code); }
+
+/* ---------- board ---------- */
+function renderBoard() {
+  const board = $('#board');
+  const sections = [
+    ['b', 'Базовые цвета', '10 концентратов, из них смешивается всё остальное'],
+    ['s', 'Вторичные цвета', '15 смесей базовых, можно купить готовыми'],
+  ];
+  for (const [type, title, note] of sections) {
+    board.append(el('h2', { class: 'band' }, [title, el('span', { text: note })]));
+    for (const g of PALETTE.groups.filter(x => x.type === type)) {
+      const six = el('div', { class: 'six' }, PALETTE.shades.filter(s => s.g === g.id).map(s => {
+        const b = el('button', { class: 'sw', type: 'button', 'data-code': s.c, 'aria-expanded': 'false', 'aria-label': s.c + ', ' + s.names[0] },
+          [img(s.c), el('span', { class: 'lv', text: levelLabel(s) })]);
+        b.addEventListener('click', () => toggle(s.c));
+        return b;
+      }));
+      board.append(el('section', { class: 'row', 'aria-label': g.id + ', ' + g.name }, [
+        el('div', { class: 'rowhead' }, [
+          el('span', { class: 'gcode', text: g.id }), el('span', { class: 'gname', text: g.name }),
+          g.mix ? el('span', { class: 'gmix', text: g.mix.map(m => m[1] + '% ' + m[0]).join(' + ') }) : null,
+        ]),
+        six,
+      ]));
+    }
+  }
+}
+
+/* ---------- views and sliders ---------- */
+function applyView() {
+  $('#board').hidden = state.view !== 'board';
+  $('#pick').hidden = state.view !== 'pick';
+  document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', String(!state.q && b.dataset.view === state.view)));
+  if (state.view === 'pick') renderNear();
+}
+function setView(v) {
+  if (specEl) closeSpec(false);
+  state.view = v;
+  if (state.q) setQuery('', false); else applyView();
+}
+function pickTarget() {
+  const { h, l, c } = state.pick, r = h * Math.PI / 180;
+  return [l, c * Math.cos(r), c * Math.sin(r)];
+}
+function renderNear() {
+  const R = PALETTE.range, { h, l, c } = state.pick, r = h * Math.PI / 180;
+  const grad = stops => 'linear-gradient(90deg,' + stops.join(',') + ')';
+  $('#s-h').style.setProperty('--track', grad(Array.from({ length: 13 }, (_, i) => lab2css(62, 42 * Math.cos(i * Math.PI / 6), 42 * Math.sin(i * Math.PI / 6)))));
+  $('#s-l').style.setProperty('--track', grad(Array.from({ length: 7 }, (_, i) => lab2css(R.L[0] + (R.L[1] - R.L[0]) * i / 6, c * Math.cos(r), c * Math.sin(r)))));
+  $('#s-c').style.setProperty('--track', grad(Array.from({ length: 5 }, (_, i) => lab2css(l, R.C * i / 4 * Math.cos(r), R.C * i / 4 * Math.sin(r)))));
+  const t = pickTarget();
+  const top = PALETTE.shades.map(s => [dE(s.lab, t), s]).sort((a, b) => a[0] - b[0]).slice(0, 6);
+  $('#near-h').textContent = top[0][0] > 20 ? 'Близкого цвета в палитре нет. Самые похожие образцы' : 'Ближайшие образцы';
+  $('#near').replaceChildren(...top.map(([, s]) => {
+    const b = el('button', { class: 'nb', type: 'button', 'data-code': s.c, 'aria-expanded': String(s.c === state.code), 'aria-label': s.c + ', ' + s.names[0] },
+      [img(s.c), el('span', { class: 'nn', text: s.names[0] }), el('span', { class: 'nc', text: s.c })]);
+    b.addEventListener('click', () => toggle(s.c));
+    return b;
+  }));
+}
+function syncSliders() { $('#s-h').value = state.pick.h; $('#s-l').value = state.pick.l; $('#s-c').value = state.pick.c; }
+function pickFrom(code) {
+  const p = S[code].lab;
+  state.pick = { h: Math.round((Math.atan2(p[2], p[1]) * 180 / Math.PI + 360) % 360), l: p[0], c: Math.min(PALETTE.range.C, chroma(p)) };
+  syncSliders();
+  setView('pick');
+  $('#views').scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
+}
+
+/* ---------- search ---------- */
+const norm = t => t.toLowerCase().replace(/ё/g, 'е').replace(/[^a-zа-я0-9%]+/g, ' ').trim();
+const ENDS = ['ого', 'его', 'ому', 'ему', 'ыми', 'ими', 'ый', 'ий', 'ой', 'ая', 'яя', 'ое', 'ее', 'ые', 'ие', 'ым', 'им', 'ом', 'ем', 'ую', 'юю', 'ых', 'их', 'ей', 'а', 'я', 'ы', 'и', 'у', 'ю', 'е', 'о', 'ь'];
+const STOP = new Set(['с', 'со', 'и', 'в', 'на', 'под', 'как', 'цвет', 'цвета', 'цветом', 'оттенок', 'оттенка', 'оттенком', 'тон', 'тона']);
+function stem(w) {
+  if (/^[a-z0-9%]+$/.test(w)) return w;
+  for (const e of ENDS) if (w.length - e.length >= 3 && w.endsWith(e)) { w = w.slice(0, -e.length); break; }
+  for (const x of ['ов', 'ев', 'н']) if (w.length - x.length >= 4 && w.endsWith(x)) { w = w.slice(0, -x.length); break; }
+  return w;
+}
+const INDEX = PALETTE.shades.map(s => {
+  const g = G[s.g];
+  return {
+    s,
+    names: s.names.map(n => ({ n: norm(n), w: norm(n).split(' ') })),
+    extra: norm(g.name + ' ' + s.tone + ' ' + (g.type === 'b' ? 'базовый' : 'вторичный')).split(' '),
+    code: s.c.toLowerCase(),
+  };
+});
+function search(query) {
+  const nq = norm(query);
+  let toks = nq.split(' ').filter(t => t && t !== '%');
+  const kept = toks.filter(t => !STOP.has(t));
+  if (kept.length) toks = kept;
+  const stems = toks.map(stem);
+  if (!stems.length) return [];
+  const out = [];
+  INDEX.forEach((it, i) => {
+    const isCode = t => /[0-9]/.test(t) || /^ink/.test(t);
+    const isLevel = t => /^\d+%$/.test(t);
+    const hitsWord = (t, words) => words.some(w => w.startsWith(t));
+    let best = 0; const matched = [];
+    it.names.forEach((nm, k) => {
+      if (stems.every(t => hitsWord(t, nm.w))) {
+        const sc = 10 + (nm.n === nq ? 6 : 0) + (nm.n.startsWith(nq) ? 2 : 0) - 0.2 * Math.max(0, nm.w.length - stems.length);
+        best = Math.max(best, sc); matched.push(k);
+      }
+    });
+    if (!best) {
+      const all = it.names.flatMap(n => n.w).concat(it.extra);
+      if (stems.every(t => isLevel(t) ? it.s.lv === t.slice(0, -1) : isCode(t) ? it.code.includes(t) : hitsWord(t, all))) best = stems.every(isCode) ? 8 : 3;
+    }
+    if (best) out.push({ s: it.s, score: best, matched, i });
+  });
+  return out.sort((a, b) => b.score - a.score || a.i - b.i);
+}
+function renderResults() {
+  const box = $('#results'), board = $('#board');
+  const q = state.q.trim();
+  $('#clear').hidden = !state.q;
+  if (!q) { box.hidden = true; box.replaceChildren(); applyView(); return; }
+  const hits = search(q);
+  board.hidden = true; $('#pick').hidden = true; box.hidden = false;
+  document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', 'false'));
+  if (!hits.length) {
+    box.replaceChildren(el('p', { class: 'none', text: 'По запросу «' + q + '» ничего не нашлось. Попробуйте одно слово, например «орех», «серый» или «пастель», либо код вроде INK12S.' }));
+    return;
+  }
+  const list = el('ol', { class: 'hits' }, hits.map(h => {
+    const s = h.s, g = G[s.g];
+    const namesEl = el('span', { class: 'hnames' });
+    s.names.forEach((n, k) => { if (k) namesEl.append(', '); namesEl.append(h.matched.includes(k) ? el('b', { text: n }) : n); });
+    const b = el('button', { class: 'hitbtn', type: 'button', 'data-code': s.c, 'aria-expanded': 'false' }, [
+      img(s.c, '', ''),
+      el('span', {}, [namesEl, el('span', { class: 'hmeta' }, [el('strong', { text: s.c }), g.name + ', ' + s.tone + (s.lv.startsWith('B') ? '' : ' тон')])]),
+    ]);
+    b.addEventListener('click', () => toggle(s.c));
+    return el('li', { class: 'hit' }, b);
+  }));
+  const n = hits.length;
+  box.replaceChildren(el('p', { class: 'count', role: 'status', text: 'По запросу «' + q + '»: ' + n + ' ' + plural(n, 'оттенок', 'оттенка', 'оттенков') }), list);
+}
+function setQuery(q, fromInput) {
+  const keep = state.code;
+  if (specEl) { specEl.remove(); specEl = null; }
+  state.q = q; state.code = null;
+  if (!fromInput) $('#q').value = q;
+  markOpen(null);
+  renderResults();
+  if (keep && triggerFor(keep)) openSpec(keep, { still: true, quiet: true });
+}
+
+/* ---------- start ---------- */
+function start(saved) {
+  renderBoard();
+  if (saved && saved.vol > 0) state.vol = saved.vol;
+  const R = PALETTE.range, sl = $('#s-l'), sc = $('#s-c');
+  sl.min = R.L[0]; sl.max = R.L[1]; sc.max = R.C;
+  const p0 = S.INK83S5.lab;                                    // open on a typical mid brown
+  state.pick = (saved && saved.pick) || { h: Math.round((Math.atan2(p0[2], p0[1]) * 180 / Math.PI + 360) % 360), l: p0[0], c: chroma(p0) };
+  syncSliders();
+  for (const [id, key] of [['#s-h', 'h'], ['#s-l', 'l'], ['#s-c', 'c']]) $(id).addEventListener('input', e => { state.pick[key] = parseFloat(e.target.value); renderNear(); });
+  $('#views').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setView(b.dataset.view); });
+  if (saved && saved.view === 'pick') state.view = 'pick';
+  applyView();
+  const input = $('#q');
+  input.addEventListener('input', () => setQuery(input.value, true));
+  $('#clear').addEventListener('click', () => { setQuery('', false); input.focus(); });
+  $('#eg').addEventListener('click', e => { if (e.target.tagName === 'BUTTON') { setQuery(e.target.textContent, false); window.scrollTo({ top: 0 }); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && state.code) closeSpec(true); });
+  if (saved && saved.q) setQuery(saved.q, false);
+  const fromHash = () => {
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (S[h]) { if (state.code !== h) { if (state.q && !triggerFor(h)) setQuery('', false); openSpec(h, { quiet: true }); } }
+    else if (h === 'all' && state.code) { closeSpec(false); }
+  };
+  window.addEventListener('hashchange', fromHash);
+  if (S[decodeURIComponent(location.hash.slice(1))]) fromHash();
+  else if (saved && saved.code && S[saved.code]) openSpec(saved.code, { still: true, quiet: true });
+}
+window.claude?.hot?.snapshot?.(() => ({ q: state.q, code: state.code, vol: state.vol, view: state.view, pick: state.pick }));
+if (window.claude?.hot?.ready) window.claude.hot.ready(start); else start(window.claude?.hot?.data ?? {});
+</script>
+</body>
+</html>
