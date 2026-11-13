@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Палитра морилок INK</title>
+<meta name="description" content="150 оттенков морилки INK на ясене: поиск по названию или коду, подбор ползунками и рецепт смешивания на нужный объём.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%239e4f24'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Sofia+Sans+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
@@ -316,9 +318,9 @@ table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-varian
 
 <script>
 const PALETTE = /*__DATA__*/null;
-const G = Object.fromEntries(PALETTE.groups.map(g => [g.id, g]));
-const S = Object.fromEntries(PALETTE.shades.map(s => [s.c, s]));
-const ORDER = PALETTE.shades.map(s => s.c);
+const byKey = (list, key) => Object.assign(Object.create(null), Object.fromEntries(list.map(x => [x[key], x])));   // no Object.prototype: "#constructor" is not a shade
+const G = byKey(PALETTE.groups, 'id');
+const S = byKey(PALETTE.shades, 'c');
 
 const $ = (sel, el = document) => el.querySelector(sel);
 const el = (tag, attrs = {}, kids = []) => {
@@ -520,6 +522,7 @@ function markOpen(code) {
   return t;
 }
 function setHash(name) { try { if (location.hash !== '#' + name) location.replace('#' + name); } catch (e) {} }
+function hashCode() { try { return decodeURIComponent(location.hash.slice(1)); } catch (e) { return ''; } }   // "#%" is not valid to decode
 function openSpec(code, opts = {}) {
   const s = S[code]; if (!s) return;
   const fresh = buildSpec(s);
@@ -600,21 +603,30 @@ function pickTarget() {
   const { h, l, c } = state.pick, r = h * Math.PI / 180;
   return [l, c * Math.cos(r), c * Math.sin(r)];
 }
+const grad = stops => 'linear-gradient(90deg,' + stops.join(',') + ')';
+const nearBtns = new Map();   // one button per swatch, kept between slider moves so that pictures are not rebuilt on every step
+let nearShown = '';
+function nearBtn(s) {
+  let b = nearBtns.get(s.c);
+  if (!b) {
+    b = el('button', { class: 'nb', type: 'button', 'data-code': s.c, 'aria-label': s.c + ', ' + s.names[0] },
+      [img(s.c), el('span', { class: 'nn', text: s.names[0] }), el('span', { class: 'nc', text: s.c })]);
+    b.addEventListener('click', () => toggle(s.c));
+    nearBtns.set(s.c, b);
+  }
+  b.setAttribute('aria-expanded', String(s.c === state.code));
+  return b;
+}
 function renderNear() {
   const R = PALETTE.range, { h, l, c } = state.pick, r = h * Math.PI / 180;
-  const grad = stops => 'linear-gradient(90deg,' + stops.join(',') + ')';
-  $('#s-h').style.setProperty('--track', grad(Array.from({ length: 13 }, (_, i) => lab2css(62, 42 * Math.cos(i * Math.PI / 6), 42 * Math.sin(i * Math.PI / 6)))));
   $('#s-l').style.setProperty('--track', grad(Array.from({ length: 7 }, (_, i) => lab2css(R.L[0] + (R.L[1] - R.L[0]) * i / 6, c * Math.cos(r), c * Math.sin(r)))));
   $('#s-c').style.setProperty('--track', grad(Array.from({ length: 5 }, (_, i) => lab2css(l, R.C * i / 4 * Math.cos(r), R.C * i / 4 * Math.sin(r)))));
   const t = pickTarget();
   const top = PALETTE.shades.map(s => [dE(s.lab, t), s]).sort((a, b) => a[0] - b[0]).slice(0, 6);
-  $('#near-h').textContent = top[0][0] > 20 ? 'Близкого цвета в палитре нет. Самые похожие образцы' : 'Ближайшие образцы';
-  $('#near').replaceChildren(...top.map(([, s]) => {
-    const b = el('button', { class: 'nb', type: 'button', 'data-code': s.c, 'aria-expanded': String(s.c === state.code), 'aria-label': s.c + ', ' + s.names[0] },
-      [img(s.c), el('span', { class: 'nn', text: s.names[0] }), el('span', { class: 'nc', text: s.c })]);
-    b.addEventListener('click', () => toggle(s.c));
-    return b;
-  }));
+  const head = top[0][0] > 20 ? 'Близкого цвета в палитре нет. Самые похожие образцы' : 'Ближайшие образцы';
+  if ($('#near-h').textContent !== head) $('#near-h').textContent = head;
+  const btns = top.map(([, s]) => nearBtn(s)), shown = top.map(([, s]) => s.c).join();
+  if (shown !== nearShown) { $('#near').replaceChildren(...btns); nearShown = shown; }
 }
 function syncSliders() { $('#s-h').value = state.pick.h; $('#s-l').value = state.pick.l; $('#s-c').value = state.pick.c; }
 function pickFrom(code) {
@@ -673,7 +685,7 @@ const INDEX = PALETTE.shades.map(s => {
   };
 });
 function search(query) {
-  const nq = norm(query);
+  const nq = norm(query).replace(/(\d) %/g, '$1%');   // "40 %" is "40%"
   let toks = nq.split(' ').filter(t => t && t !== '%');
   const kept = toks.filter(t => !STOP.has(t));
   if (kept.length) toks = kept;
@@ -701,8 +713,8 @@ function search(query) {
 }
 function renderResults() {
   const box = $('#results'), board = $('#board');
-  const q = state.q.trim();
-  $('#clear').hidden = !state.q;
+  const q = state.q;
+  $('#clear').hidden = !q;
   if (!q) { box.hidden = true; box.replaceChildren(); applyView(); return; }
   const hits = search(q);
   board.hidden = true; $('#pick').hidden = true; $('#photos').hidden = true; box.hidden = false;
@@ -726,13 +738,16 @@ function renderResults() {
   box.replaceChildren(el('p', { class: 'count', role: 'status', text: 'По запросу «' + q + '»: ' + n + ' ' + plural(n, 'оттенок', 'оттенка', 'оттенков') }), list);
 }
 function setQuery(q, fromInput) {
+  if (!fromInput) $('#q').value = q;
+  q = q.trim();                                    // spaces alone are not a query: the board stays as it is
+  if (fromInput && q === state.q) return;          // a trailing space typed: nothing new to search
   const keep = state.code;
   if (specEl) { specEl.remove(); specEl = null; }
   state.q = q; state.code = null;
-  if (!fromInput) $('#q').value = q;
   markOpen(null);
   renderResults();
   if (keep && triggerFor(keep)) openSpec(keep, { still: true, quiet: true });
+  else if (keep) setHash('all');                   // the card is gone, the address must not keep pointing at it
 }
 
 /* ---------- start ---------- */
@@ -742,6 +757,7 @@ function start(saved) {
   if (saved && saved.vol > 0) state.vol = saved.vol;
   const R = PALETTE.range, sl = $('#s-l'), sc = $('#s-c');
   sl.min = R.L[0]; sl.max = R.L[1]; sc.max = R.C;
+  $('#s-h').style.setProperty('--track', grad(Array.from({ length: 13 }, (_, i) => lab2css(62, 42 * Math.cos(i * Math.PI / 6), 42 * Math.sin(i * Math.PI / 6)))));
   const p0 = S.INK83S5.lab;                                    // open on a typical mid brown
   state.pick = (saved && saved.pick) || { h: Math.round((Math.atan2(p0[2], p0[1]) * 180 / Math.PI + 360) % 360), l: p0[0], c: chroma(p0) };
   syncSliders();
@@ -756,12 +772,12 @@ function start(saved) {
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && state.code) closeSpec(true); });
   if (saved && saved.q) setQuery(saved.q, false);
   const fromHash = () => {
-    const h = decodeURIComponent(location.hash.slice(1));
+    const h = hashCode();
     if (S[h]) { if (state.code !== h) { if (state.q && !triggerFor(h)) setQuery('', false); openSpec(h, { quiet: true }); } }
     else if (h === 'all' && state.code) { closeSpec(false); }
   };
   window.addEventListener('hashchange', fromHash);
-  if (S[decodeURIComponent(location.hash.slice(1))]) fromHash();
+  if (S[hashCode()]) fromHash();
   else if (saved && saved.code && S[saved.code]) openSpec(saved.code, { still: true, quiet: true });
 }
 window.claude?.hot?.snapshot?.(() => ({ q: state.q, code: state.code, vol: state.vol, view: state.view, pick: state.pick }));
