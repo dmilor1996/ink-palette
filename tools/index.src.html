@@ -70,8 +70,9 @@ button, input { font: inherit; color: inherit; }
 }
 .eg button:hover { border-color: var(--ink); }
 :is(.clear, .eg button, .vols button, .copy, .x, .sib, .hitbtn, .mv, .tune, .nb):focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.views { scroll-margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; margin: 4px 0 0; border: 1.5px solid var(--ink); border-radius: 4px; overflow: hidden; }
-.views button { height: 42px; border: 0; background: none; cursor: pointer; font-weight: 500; }
+.views { scroll-margin-top: 72px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 4px 0 0; border: 1.5px solid var(--ink); border-radius: 4px; overflow: hidden; }
+.views button { min-height: 42px; padding: 4px 6px; border: 0; background: none; cursor: pointer; font-weight: 500; line-height: 1.2; }
+.views button + button { border-left: 1.5px solid var(--ink); }
 .views button[aria-pressed="true"] { background: var(--ink); color: var(--card); }
 .views button:focus-visible { outline: 2px solid var(--ink); outline-offset: -5px; }
 .views button[aria-pressed="true"]:focus-visible { outline-color: var(--card); }
@@ -96,6 +97,21 @@ button, input { font: inherit; color: inherit; }
 .nb[aria-expanded="true"] img { outline: 3px solid var(--ink); outline-offset: 2px; }
 #pick > .spec { margin-top: 20px; }
 
+/* ---------- original photos ---------- */
+.photo { margin: 22px 0 0; scroll-margin-top: 72px; }
+.photo h2 { margin: 0 0 8px; font: 700 20px/1.2 var(--display); letter-spacing: 0.01em; }
+.photo h2 span { font: 400 14px/1.3 var(--body); color: var(--soft); margin-left: 8px; }
+.ph { position: relative; max-width: 680px; }
+.ph > img { display: block; width: 100%; height: auto; border-radius: 3px; background: var(--rule); }
+.hot { position: absolute; padding: 0; border: 0; background: transparent; cursor: pointer; border-radius: 2px; scroll-margin: 120px 0; }
+@media (hover: hover) { .hot:hover { outline: 2px solid #fff; box-shadow: 0 0 0 4px rgba(23, 25, 28, 0.55); } }
+.hot:focus-visible, .hot[aria-expanded="true"] { outline: 3px solid #fff; box-shadow: 0 0 0 6px #17191c; }
+.hot.flash { animation: flash 0.5s ease-in-out 3; }
+@keyframes flash { 50% { box-shadow: 0 0 0 12px rgba(23, 25, 28, 0.25); } }
+.full { display: inline-block; margin-top: 6px; color: var(--soft); font-size: 14px; text-underline-offset: 3px; }
+.full:hover { color: var(--ink); }
+.photo > .spec { max-width: 680px; }
+
 /* ---------- "like this, but…" ---------- */
 .but h3 { margin: 18px 0 8px; font: 700 20px/1.2 var(--display); color: var(--ink); }
 .moves { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; max-width: 460px; }
@@ -103,6 +119,7 @@ button, input { font: inherit; color: inherit; }
 .mv img { flex: none; width: 30px; height: 38px; object-fit: cover; border-radius: 2px; background: var(--rule); }
 .mv:hover:not(:disabled) { border-color: var(--ink); }
 .mv:disabled { cursor: default; padding-left: 12px; color: var(--soft); border-style: dashed; }
+.links { display: flex; flex-wrap: wrap; gap: 0 18px; }
 .tune { margin-top: 8px; padding: 8px 0; border: 0; background: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .like .sib span { font-size: 11px; letter-spacing: 0; overflow-wrap: anywhere; }
 .spec:focus { outline: none; }
@@ -225,7 +242,7 @@ table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-varian
   .vols label { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .spec { animation: none; }
+  .spec, .hot.flash { animation: none; }
   .sw img { transition: none; }
 }
 </style>
@@ -255,7 +272,8 @@ table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-varian
   </div>
   <div class="views" id="views" role="group" aria-label="Способ выбора">
     <button type="button" data-view="board" aria-pressed="true">Вся палитра</button>
-    <button type="button" data-view="pick" aria-pressed="false">Подбор ползунками</button>
+    <button type="button" data-view="pick" aria-pressed="false">Ползунки</button>
+    <button type="button" data-view="photos" aria-pressed="false">Фото палитры</button>
   </div>
 
   <main>
@@ -279,6 +297,9 @@ table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-varian
       <p class="near-h" id="near-h" role="status"></p>
       <div class="near" id="near"></div>
     </section>
+    <section id="photos" aria-label="Фото палитры" hidden>
+      <p class="pick-lede">Исходные снимки палитры без обработки. Нажмите на образец на фото, чтобы открыть его карточку.</p>
+    </section>
     <div id="board"></div>
   </main>
 
@@ -289,7 +310,7 @@ table.rc { width: 100%; max-width: 460px; border-collapse: collapse; font-varian
     <p>Вторичные цвета (буква S) смешиваются из базовых (буква P). В рецепте они уже разложены на базовые.</p>
     <h2>О точности</h2>
     <p>Выкрасы сделаны на ясене. Морилка прозрачная, поэтому на дубе, сосне или буке тот же состав ляжет иначе: делайте пробный выкрас на своей древесине.</p>
-    <p>Образцы вырезаны из фотографий палитры, свет на них выровнен по бумаге, поэтому цвет зависит от съёмки и вашего экрана. Перед работой сверяйте оттенок с живым образцом. Проценты приняты объёмными, а народные названия подобраны по виду образцов и не взяты у производителя.</p>
+    <p>Образцы вырезаны из фотографий палитры (их можно посмотреть целиком во вкладке «Фото палитры»), свет на вырезах выровнен по бумаге, поэтому цвет зависит от съёмки и вашего экрана. Перед работой сверяйте оттенок с живым образцом. Проценты приняты объёмными, а народные названия подобраны по виду образцов и не взяты у производителя.</p>
   </footer>
 </div>
 
@@ -468,7 +489,9 @@ function buildSpec(s) {
   ]);
   const tune = el('button', { class: 'tune', type: 'button', text: 'Подвигать ползунки от этого цвета' });
   tune.addEventListener('click', () => { pickFrom(s.c); });
-  but.append(tune);
+  const onPhoto = el('button', { class: 'tune', type: 'button', text: 'Показать на фото палитры' });
+  onPhoto.addEventListener('click', () => showOnPhoto(s.c));
+  but.append(el('div', { class: 'links' }, [tune, onPhoto]));
   const like = el('div', { class: 'sibs like' }, [
     el('h3', { text: 'Похожие оттенки из других цветов' }),
     el('div', { class: 'sibrow' }, similar(s.c, 6).map(x => {
@@ -487,7 +510,7 @@ function buildSpec(s) {
 let specEl = null;
 const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 function triggerFor(code) {
-  const root = state.q ? $('#results') : state.view === 'pick' ? $('#near') : $('#board');
+  const root = state.q ? $('#results') : state.view === 'pick' ? $('#near') : state.view === 'photos' ? $('#photos') : $('#board');
   return root.querySelector('[data-code="' + code + '"]');
 }
 function markOpen(code) {
@@ -507,7 +530,7 @@ function openSpec(code, opts = {}) {
   } else {
     if (specEl) specEl.remove();
     const t = triggerFor(code);
-    const host = t ? t.closest('.row, .hit, #pick') : (state.view === 'pick' && !state.q ? $('#pick') : $('#board'));
+    const host = t ? t.closest('.row, .hit, #pick, .photo') : (state.view === 'pick' && !state.q ? $('#pick') : $('#board'));
     host.append(fresh);
   }
   specEl = fresh; state.code = code;
@@ -515,6 +538,10 @@ function openSpec(code, opts = {}) {
   if (!opts.quiet) setHash(code);
   if (!opts.still) requestAnimationFrame(() => {
     const r = fresh.getBoundingClientRect(), host = fresh.parentElement, hr = host.getBoundingClientRect();
+    if (host.classList.contains('photo')) {                          // the photo is tall: bring the card itself up
+      if (r.top < 66 || r.top > window.innerHeight * 0.6) fresh.scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
+      return;
+    }
     if (hr.top >= 66 && r.bottom <= window.innerHeight) return;     // row and specimen already fit on screen
     host.scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
   });
@@ -560,6 +587,7 @@ function renderBoard() {
 function applyView() {
   $('#board').hidden = state.view !== 'board';
   $('#pick').hidden = state.view !== 'pick';
+  $('#photos').hidden = state.view !== 'photos';
   document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', String(!state.q && b.dataset.view === state.view)));
   if (state.view === 'pick') renderNear();
 }
@@ -595,6 +623,34 @@ function pickFrom(code) {
   syncSliders();
   setView('pick');
   $('#views').scrollIntoView({ block: 'start', behavior: reduce() ? 'auto' : 'smooth' });
+}
+
+/* ---------- original photos with tappable swatches ---------- */
+function renderPhotos() {
+  const sec = $('#photos');
+  PALETTE.photos.forEach((p, i) => {
+    const hots = PALETTE.shades.filter(s => s.ph[0] === i).map(s => {
+      const [, x, y, w, h] = s.ph;
+      const b = el('button', { class: 'hot', type: 'button', 'data-code': s.c, 'aria-expanded': 'false', 'aria-label': s.c + ', ' + s.names[0],
+        style: 'left:' + x + '%;top:' + y + '%;width:' + w + '%;height:' + h + '%' });
+      b.addEventListener('click', () => toggle(s.c));
+      return b;
+    });
+    sec.append(el('figure', { class: 'photo', id: 'photo-' + (i + 1), 'aria-label': 'Фото ' + (i + 1) }, [
+      el('h2', {}, ['Фото ' + (i + 1), el('span', { text: p.groups.join(', ') })]),
+      el('div', { class: 'ph' }, [el('img', { src: p.file, alt: 'Исходное фото палитры: ' + p.groups.join(', '), width: p.w, height: p.h, loading: 'lazy', decoding: 'async' }), ...hots]),
+      el('a', { class: 'full', href: p.file, target: '_blank', rel: 'noopener', text: 'Открыть фото в полном размере' }),
+    ]));
+  });
+}
+function showOnPhoto(code) {
+  setView('photos');
+  openSpec(code, { still: true });
+  const t = triggerFor(code);
+  if (!t) return;
+  t.scrollIntoView({ block: 'center', behavior: reduce() ? 'auto' : 'smooth' });
+  t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash');
+  t.addEventListener('animationend', () => t.classList.remove('flash'), { once: true });
 }
 
 /* ---------- search ---------- */
@@ -649,7 +705,7 @@ function renderResults() {
   $('#clear').hidden = !state.q;
   if (!q) { box.hidden = true; box.replaceChildren(); applyView(); return; }
   const hits = search(q);
-  board.hidden = true; $('#pick').hidden = true; box.hidden = false;
+  board.hidden = true; $('#pick').hidden = true; $('#photos').hidden = true; box.hidden = false;
   document.querySelectorAll('#views button').forEach(b => b.setAttribute('aria-pressed', 'false'));
   if (!hits.length) {
     box.replaceChildren(el('p', { class: 'none', text: 'По запросу «' + q + '» ничего не нашлось. Попробуйте одно слово, например «орех», «серый» или «пастель», либо код вроде INK12S.' }));
@@ -682,6 +738,7 @@ function setQuery(q, fromInput) {
 /* ---------- start ---------- */
 function start(saved) {
   renderBoard();
+  renderPhotos();
   if (saved && saved.vol > 0) state.vol = saved.vol;
   const R = PALETTE.range, sl = $('#s-l'), sc = $('#s-c');
   sl.min = R.L[0]; sl.max = R.L[1]; sc.max = R.C;
@@ -690,7 +747,7 @@ function start(saved) {
   syncSliders();
   for (const [id, key] of [['#s-h', 'h'], ['#s-l', 'l'], ['#s-c', 'c']]) $(id).addEventListener('input', e => { state.pick[key] = parseFloat(e.target.value); renderNear(); });
   $('#views').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setView(b.dataset.view); });
-  if (saved && saved.view === 'pick') state.view = 'pick';
+  if (saved && (saved.view === 'pick' || saved.view === 'photos')) state.view = saved.view;
   applyView();
   const input = $('#q');
   input.addEventListener('input', () => setQuery(input.value, true));

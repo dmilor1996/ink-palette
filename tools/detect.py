@@ -5,11 +5,11 @@ import numpy as np, cv2
 SRC, OUT = sys.argv[1], sys.argv[2]
 THR = 7
 PHOTOS = [
-    ('2f9bba93-image.jpg', ['INK10P', 'INK11P', 'INK20P', 'INK30P', 'INK40P']),
-    ('e928a57e-image.jpg', ['INK50P', 'INK60P', 'INK80P', 'INK90P', 'INKBP']),
-    ('eb9e5382-image.jpg', ['INK12S', 'INK23S', 'INK44S', 'INK47S', 'INK55S']),
-    ('f3b7b42a-image.jpg', ['INK57S', 'INK61S', 'INK65S', 'INK66S', 'INK67S']),
-    ('08d23473-image.jpg', ['INK81S', 'INK82S', 'INK83S', 'INK86S', 'INK88S']),
+    ('photos/palette-1.jpg', ['INK10P', 'INK11P', 'INK20P', 'INK30P', 'INK40P']),
+    ('photos/palette-2.jpg', ['INK50P', 'INK60P', 'INK80P', 'INK90P', 'INKBP']),
+    ('photos/palette-3.jpg', ['INK12S', 'INK23S', 'INK44S', 'INK47S', 'INK55S']),
+    ('photos/palette-4.jpg', ['INK57S', 'INK61S', 'INK65S', 'INK66S', 'INK67S']),
+    ('photos/palette-5.jpg', ['INK81S', 'INK82S', 'INK83S', 'INK86S', 'INK88S']),
 ]
 
 

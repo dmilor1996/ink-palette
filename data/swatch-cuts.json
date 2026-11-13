@@ -1,6 +1,6 @@
 {
  "INK10P40": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 83.8,
   "t": 40.0,
@@ -56,7 +56,7 @@
   ]
  },
  "INK10P15": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 68.9,
   "t": 34.4,
@@ -112,7 +112,7 @@
   ]
  },
  "INK10P5": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 63.7,
   "t": 31.8,
@@ -168,7 +168,7 @@
   ]
  },
  "INK10P2": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 43.5,
   "t": 21.8,
@@ -224,7 +224,7 @@
   ]
  },
  "INK10PB1005": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 35.0,
   "t": 17.5,
@@ -280,7 +280,7 @@
   ]
  },
  "INK10PB1002": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 26.1,
   "t": 13.1,
@@ -336,7 +336,7 @@
   ]
  },
  "INK11P40": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 101.9,
   "t": 40.0,
@@ -392,7 +392,7 @@
   ]
  },
  "INK11P15": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 84.1,
   "t": 40.0,
@@ -448,7 +448,7 @@
   ]
  },
  "INK11P5": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 73.1,
   "t": 36.5,
@@ -504,7 +504,7 @@
   ]
  },
  "INK11P2": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 62.5,
   "t": 31.3,
@@ -560,7 +560,7 @@
   ]
  },
  "INK11PB1005": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 35.2,
   "t": 17.6,
@@ -616,7 +616,7 @@
   ]
  },
  "INK11PB1002": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 29.3,
   "t": 14.6,
@@ -672,7 +672,7 @@
   ]
  },
  "INK20P40": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 115.4,
   "t": 40.0,
@@ -728,7 +728,7 @@
   ]
  },
  "INK20P15": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 109.8,
   "t": 40.0,
@@ -784,7 +784,7 @@
   ]
  },
  "INK20P5": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 95.2,
   "t": 40.0,
@@ -840,7 +840,7 @@
   ]
  },
  "INK20P2": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 85.5,
   "t": 40.0,
@@ -896,7 +896,7 @@
   ]
  },
  "INK20PB1005": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 41.5,
   "t": 20.8,
@@ -952,7 +952,7 @@
   ]
  },
  "INK20PB1002": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 32.0,
   "t": 16.0,
@@ -1008,7 +1008,7 @@
   ]
  },
  "INK30P40": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 142.8,
   "t": 40.0,
@@ -1064,7 +1064,7 @@
   ]
  },
  "INK30P15": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 130.1,
   "t": 40.0,
@@ -1120,7 +1120,7 @@
   ]
  },
  "INK30P5": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 117.9,
   "t": 40.0,
@@ -1176,7 +1176,7 @@
   ]
  },
  "INK30P2": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 104.9,
   "t": 40.0,
@@ -1232,7 +1232,7 @@
   ]
  },
  "INK30PB1005": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 52.2,
   "t": 26.1,
@@ -1288,7 +1288,7 @@
   ]
  },
  "INK30PB1002": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 39.6,
   "t": 19.8,
@@ -1344,7 +1344,7 @@
   ]
  },
  "INK40P40": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 123.2,
   "t": 40.0,
@@ -1400,7 +1400,7 @@
   ]
  },
  "INK40P15": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 114.6,
   "t": 40.0,
@@ -1456,7 +1456,7 @@
   ]
  },
  "INK40P5": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 94.0,
   "t": 40.0,
@@ -1512,7 +1512,7 @@
   ]
  },
  "INK40P2": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 96.9,
   "t": 40.0,
@@ -1568,7 +1568,7 @@
   ]
  },
  "INK40PB1005": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 58.2,
   "t": 29.1,
@@ -1624,7 +1624,7 @@
   ]
  },
  "INK40PB1002": {
-  "photo": "2f9bba93-image.jpg",
+  "photo": "photos/palette-1.jpg",
   "method": "d",
   "din": 45.4,
   "t": 22.7,
@@ -1680,7 +1680,7 @@
   ]
  },
  "INK50P40": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 145.5,
   "t": 40.0,
@@ -1736,7 +1736,7 @@
   ]
  },
  "INK50P15": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 116.0,
   "t": 40.0,
@@ -1792,7 +1792,7 @@
   ]
  },
  "INK50P5": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 91.3,
   "t": 40.0,
@@ -1848,7 +1848,7 @@
   ]
  },
  "INK50P2": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 81.7,
   "t": 40.0,
@@ -1904,7 +1904,7 @@
   ]
  },
  "INK50PB1005": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 41.4,
   "t": 20.7,
@@ -1960,7 +1960,7 @@
   ]
  },
  "INK50PB1002": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 31.5,
   "t": 15.7,
@@ -2016,7 +2016,7 @@
   ]
  },
  "INK60P40": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 131.6,
   "t": 40.0,
@@ -2072,7 +2072,7 @@
   ]
  },
  "INK60P15": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 103.6,
   "t": 40.0,
@@ -2128,7 +2128,7 @@
   ]
  },
  "INK60P5": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 68.6,
   "t": 34.3,
@@ -2184,7 +2184,7 @@
   ]
  },
  "INK60P2": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 67.6,
   "t": 33.8,
@@ -2240,7 +2240,7 @@
   ]
  },
  "INK60PB1005": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 36.9,
   "t": 18.4,
@@ -2296,7 +2296,7 @@
   ]
  },
  "INK60PB1002": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 35.0,
   "t": 17.5,
@@ -2352,7 +2352,7 @@
   ]
  },
  "INK80P40": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 135.5,
   "t": 40.0,
@@ -2408,7 +2408,7 @@
   ]
  },
  "INK80P15": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 130.5,
   "t": 40.0,
@@ -2464,7 +2464,7 @@
   ]
  },
  "INK80P5": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 106.4,
   "t": 40.0,
@@ -2520,7 +2520,7 @@
   ]
  },
  "INK80P2": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 86.0,
   "t": 40.0,
@@ -2576,7 +2576,7 @@
   ]
  },
  "INK80PB1005": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 50.1,
   "t": 25.0,
@@ -2632,7 +2632,7 @@
   ]
  },
  "INK80PB1002": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 45.2,
   "t": 22.6,
@@ -2688,7 +2688,7 @@
   ]
  },
  "INK90P40": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 146.8,
   "t": 40.0,
@@ -2744,7 +2744,7 @@
   ]
  },
  "INK90P15": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 141.5,
   "t": 40.0,
@@ -2800,7 +2800,7 @@
   ]
  },
  "INK90P5": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 114.8,
   "t": 40.0,
@@ -2856,7 +2856,7 @@
   ]
  },
  "INK90P2": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 101.1,
   "t": 40.0,
@@ -2912,7 +2912,7 @@
   ]
  },
  "INK90PB1005": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 61.4,
   "t": 30.7,
@@ -2968,7 +2968,7 @@
   ]
  },
  "INK90PB1002": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 48.2,
   "t": 24.1,
@@ -3024,7 +3024,7 @@
   ]
  },
  "INKBP40": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "manual",
   "din": 0,
   "t": 0,
@@ -3080,7 +3080,7 @@
   ]
  },
  "INKBP30": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "manual",
   "din": 0,
   "t": 0,
@@ -3136,7 +3136,7 @@
   ]
  },
  "INKBP20": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "grad",
   "din": 0,
   "t": 0,
@@ -3192,7 +3192,7 @@
   ]
  },
  "INKBP15": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "grad",
   "din": 0,
   "t": 0,
@@ -3248,7 +3248,7 @@
   ]
  },
  "INKBP10": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "grad",
   "din": 0,
   "t": 0,
@@ -3304,7 +3304,7 @@
   ]
  },
  "INKBP5": {
-  "photo": "e928a57e-image.jpg",
+  "photo": "photos/palette-2.jpg",
   "method": "d",
   "din": 24.8,
   "t": 12.4,
@@ -3360,7 +3360,7 @@
   ]
  },
  "INK12S40": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 106.7,
   "t": 40.0,
@@ -3416,7 +3416,7 @@
   ]
  },
  "INK12S15": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 73.2,
   "t": 36.6,
@@ -3472,7 +3472,7 @@
   ]
  },
  "INK12S5": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 67.4,
   "t": 33.7,
@@ -3528,7 +3528,7 @@
   ]
  },
  "INK12S2": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 45.1,
   "t": 22.5,
@@ -3584,7 +3584,7 @@
   ]
  },
  "INK12SB1005": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 28.0,
   "t": 14.0,
@@ -3640,7 +3640,7 @@
   ]
  },
  "INK12SB1002": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 27.0,
   "t": 13.5,
@@ -3696,7 +3696,7 @@
   ]
  },
  "INK23S40": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 117.0,
   "t": 40.0,
@@ -3752,7 +3752,7 @@
   ]
  },
  "INK23S15": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 99.2,
   "t": 40.0,
@@ -3808,7 +3808,7 @@
   ]
  },
  "INK23S5": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 82.8,
   "t": 40.0,
@@ -3864,7 +3864,7 @@
   ]
  },
  "INK23S2": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 66.2,
   "t": 33.1,
@@ -3920,7 +3920,7 @@
   ]
  },
  "INK23SB1005": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 34.2,
   "t": 17.1,
@@ -3976,7 +3976,7 @@
   ]
  },
  "INK23SB1002": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 29.6,
   "t": 14.8,
@@ -4032,7 +4032,7 @@
   ]
  },
  "INK44S40": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 119.2,
   "t": 40.0,
@@ -4088,7 +4088,7 @@
   ]
  },
  "INK44S15": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 119.5,
   "t": 40.0,
@@ -4144,7 +4144,7 @@
   ]
  },
  "INK44S5": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 103.2,
   "t": 40.0,
@@ -4200,7 +4200,7 @@
   ]
  },
  "INK44S2": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 78.8,
   "t": 39.4,
@@ -4256,7 +4256,7 @@
   ]
  },
  "INK44SB1005": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 45.2,
   "t": 22.6,
@@ -4312,7 +4312,7 @@
   ]
  },
  "INK44SB1002": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 35.2,
   "t": 17.6,
@@ -4368,7 +4368,7 @@
   ]
  },
  "INK47S40": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 143.3,
   "t": 40.0,
@@ -4424,7 +4424,7 @@
   ]
  },
  "INK47S15": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 144.9,
   "t": 40.0,
@@ -4480,7 +4480,7 @@
   ]
  },
  "INK47S5": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 110.9,
   "t": 40.0,
@@ -4536,7 +4536,7 @@
   ]
  },
  "INK47S2": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 75.4,
   "t": 37.7,
@@ -4592,7 +4592,7 @@
   ]
  },
  "INK47SB1005": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 49.8,
   "t": 24.9,
@@ -4648,7 +4648,7 @@
   ]
  },
  "INK47SB1002": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 35.9,
   "t": 18.0,
@@ -4704,7 +4704,7 @@
   ]
  },
  "INK55S40": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 136.1,
   "t": 40.0,
@@ -4760,7 +4760,7 @@
   ]
  },
  "INK55S15": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 114.2,
   "t": 40.0,
@@ -4816,7 +4816,7 @@
   ]
  },
  "INK55S5": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 90.6,
   "t": 40.0,
@@ -4872,7 +4872,7 @@
   ]
  },
  "INK55S2": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 68.5,
   "t": 34.2,
@@ -4928,7 +4928,7 @@
   ]
  },
  "INK55SB1005": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 37.1,
   "t": 18.6,
@@ -4984,7 +4984,7 @@
   ]
  },
  "INK55SB1002": {
-  "photo": "eb9e5382-image.jpg",
+  "photo": "photos/palette-3.jpg",
   "method": "d",
   "din": 29.8,
   "t": 14.9,
@@ -5040,7 +5040,7 @@
   ]
  },
  "INK57S40": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 150.4,
   "t": 40.0,
@@ -5096,7 +5096,7 @@
   ]
  },
  "INK57S15": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 139.0,
   "t": 40.0,
@@ -5152,7 +5152,7 @@
   ]
  },
  "INK57S5": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 116.4,
   "t": 40.0,
@@ -5208,7 +5208,7 @@
   ]
  },
  "INK57S2": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 77.8,
   "t": 38.9,
@@ -5264,7 +5264,7 @@
   ]
  },
  "INK57SB1005": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 42.0,
   "t": 21.0,
@@ -5320,7 +5320,7 @@
   ]
  },
  "INK57SB1002": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 38.6,
   "t": 19.3,
@@ -5376,7 +5376,7 @@
   ]
  },
  "INK61S40": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 125.7,
   "t": 40.0,
@@ -5432,7 +5432,7 @@
   ]
  },
  "INK61S15": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 105.8,
   "t": 40.0,
@@ -5488,7 +5488,7 @@
   ]
  },
  "INK61S5": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 79.8,
   "t": 39.9,
@@ -5544,7 +5544,7 @@
   ]
  },
  "INK61S2": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 62.3,
   "t": 31.1,
@@ -5600,7 +5600,7 @@
   ]
  },
  "INK61SB1005": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 32.2,
   "t": 16.1,
@@ -5656,7 +5656,7 @@
   ]
  },
  "INK61SB1002": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 30.2,
   "t": 15.1,
@@ -5712,7 +5712,7 @@
   ]
  },
  "INK65S40": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 132.2,
   "t": 40.0,
@@ -5768,7 +5768,7 @@
   ]
  },
  "INK65S15": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 117.0,
   "t": 40.0,
@@ -5824,7 +5824,7 @@
   ]
  },
  "INK65S5": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 89.3,
   "t": 40.0,
@@ -5880,7 +5880,7 @@
   ]
  },
  "INK65S2": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 61.0,
   "t": 30.5,
@@ -5936,7 +5936,7 @@
   ]
  },
  "INK65SB1005": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 44.2,
   "t": 22.1,
@@ -5992,7 +5992,7 @@
   ]
  },
  "INK65SB1002": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 34.0,
   "t": 17.0,
@@ -6048,7 +6048,7 @@
   ]
  },
  "INK66S40": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 133.4,
   "t": 40.0,
@@ -6104,7 +6104,7 @@
   ]
  },
  "INK66S15": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 113.2,
   "t": 40.0,
@@ -6160,7 +6160,7 @@
   ]
  },
  "INK66S5": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 76.6,
   "t": 38.3,
@@ -6216,7 +6216,7 @@
   ]
  },
  "INK66S2": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 62.2,
   "t": 31.1,
@@ -6272,7 +6272,7 @@
   ]
  },
  "INK66SB1005": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 43.2,
   "t": 21.6,
@@ -6328,7 +6328,7 @@
   ]
  },
  "INK66SB1002": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 34.7,
   "t": 17.4,
@@ -6384,7 +6384,7 @@
   ]
  },
  "INK67S40": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 139.0,
   "t": 40.0,
@@ -6440,7 +6440,7 @@
   ]
  },
  "INK67S15": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 135.9,
   "t": 40.0,
@@ -6496,7 +6496,7 @@
   ]
  },
  "INK67S5": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 100.3,
   "t": 40.0,
@@ -6552,7 +6552,7 @@
   ]
  },
  "INK67S2": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 58.2,
   "t": 29.1,
@@ -6608,7 +6608,7 @@
   ]
  },
  "INK67SB1005": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 44.5,
   "t": 22.3,
@@ -6664,7 +6664,7 @@
   ]
  },
  "INK67SB1002": {
-  "photo": "f3b7b42a-image.jpg",
+  "photo": "photos/palette-4.jpg",
   "method": "d",
   "din": 39.2,
   "t": 19.6,
@@ -6720,7 +6720,7 @@
   ]
  },
  "INK81S40": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 106.6,
   "t": 40.0,
@@ -6776,7 +6776,7 @@
   ]
  },
  "INK81S15": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 77.2,
   "t": 38.6,
@@ -6832,7 +6832,7 @@
   ]
  },
  "INK81S5": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 61.4,
   "t": 30.7,
@@ -6888,7 +6888,7 @@
   ]
  },
  "INK81S2": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 44.4,
   "t": 22.2,
@@ -6944,7 +6944,7 @@
   ]
  },
  "INK81SB1005": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 30.7,
   "t": 15.3,
@@ -7000,7 +7000,7 @@
   ]
  },
  "INK81SB1002": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 32.7,
   "t": 16.3,
@@ -7056,7 +7056,7 @@
   ]
  },
  "INK82S40": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 118.8,
   "t": 40.0,
@@ -7112,7 +7112,7 @@
   ]
  },
  "INK82S15": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 99.0,
   "t": 40.0,
@@ -7168,7 +7168,7 @@
   ]
  },
  "INK82S5": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 76.9,
   "t": 38.4,
@@ -7224,7 +7224,7 @@
   ]
  },
  "INK82S2": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 58.4,
   "t": 29.2,
@@ -7280,7 +7280,7 @@
   ]
  },
  "INK82SB1005": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 40.0,
   "t": 20.0,
@@ -7336,7 +7336,7 @@
   ]
  },
  "INK82SB1002": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 31.7,
   "t": 15.9,
@@ -7392,7 +7392,7 @@
   ]
  },
  "INK83S40": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 130.1,
   "t": 40.0,
@@ -7448,7 +7448,7 @@
   ]
  },
  "INK83S15": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 118.9,
   "t": 40.0,
@@ -7504,7 +7504,7 @@
   ]
  },
  "INK83S5": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 94.1,
   "t": 40.0,
@@ -7560,7 +7560,7 @@
   ]
  },
  "INK83S2": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 75.8,
   "t": 37.9,
@@ -7616,7 +7616,7 @@
   ]
  },
  "INK83SB1005": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 42.2,
   "t": 21.1,
@@ -7672,7 +7672,7 @@
   ]
  },
  "INK83SB1002": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 40.3,
   "t": 20.1,
@@ -7728,7 +7728,7 @@
   ]
  },
  "INK86S40": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 131.1,
   "t": 40.0,
@@ -7784,7 +7784,7 @@
   ]
  },
  "INK86S15": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 131.1,
   "t": 40.0,
@@ -7840,7 +7840,7 @@
   ]
  },
  "INK86S5": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 95.0,
   "t": 40.0,
@@ -7896,7 +7896,7 @@
   ]
  },
  "INK86S2": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 83.7,
   "t": 40.0,
@@ -7952,7 +7952,7 @@
   ]
  },
  "INK86SB1005": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 40.8,
   "t": 20.4,
@@ -8008,7 +8008,7 @@
   ]
  },
  "INK86SB1002": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 43.0,
   "t": 21.5,
@@ -8064,7 +8064,7 @@
   ]
  },
  "INK88S40": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 132.7,
   "t": 40.0,
@@ -8120,7 +8120,7 @@
   ]
  },
  "INK88S15": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 106.9,
   "t": 40.0,
@@ -8176,7 +8176,7 @@
   ]
  },
  "INK88S5": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 85.1,
   "t": 40.0,
@@ -8232,7 +8232,7 @@
   ]
  },
  "INK88S2": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 70.3,
   "t": 35.2,
@@ -8288,7 +8288,7 @@
   ]
  },
  "INK88SB1005": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 42.3,
   "t": 21.2,
@@ -8344,7 +8344,7 @@
   ]
  },
  "INK88SB1002": {
-  "photo": "08d23473-image.jpg",
+  "photo": "photos/palette-5.jpg",
   "method": "d",
   "din": 36.8,
   "t": 18.4,
